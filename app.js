@@ -1,11 +1,13 @@
 var express = require("express");
+require("dotenv").config();
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var personsRouter = require("./routes/persons.routes");
 var usersRouter = require("./routes/users");
-
+const { dbConnection } = require("./models/connectionDatabase");
+dbConnection();
 var app = express();
 
 const requestLogger = (request, response, next) => {
